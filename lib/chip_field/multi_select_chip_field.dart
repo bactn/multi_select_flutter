@@ -32,6 +32,9 @@ class MultiSelectChipField<V> extends FormField<List<V>> {
   /// Set a ShapeBorder. Typically a RoundedRectangularBorder.
   final ShapeBorder? chipShape;
 
+  /// Set a SelectedShapeBorder. Typically a RoundedRectangularBorder.
+  final ShapeBorder? selectedChipShape;
+
   /// Defines the header text.
   final Text? title;
 
@@ -96,6 +99,7 @@ class MultiSelectChipField<V> extends FormField<List<V>> {
     this.searchIcon,
     this.closeSearchIcon,
     this.chipShape,
+    this.selectedChipShape,
     this.onTap,
     this.title,
     this.scroll = true,
@@ -134,6 +138,7 @@ class MultiSelectChipField<V> extends FormField<List<V>> {
                 searchIcon: searchIcon,
                 closeSearchIcon: closeSearchIcon,
                 chipShape: chipShape,
+                selectedChipShape: selectedChipShape,
                 onTap: onTap,
                 title: title,
                 scroll: scroll,
@@ -169,6 +174,7 @@ class _MultiSelectChipFieldView<V> extends StatefulWidget
   final Icon? searchIcon;
   final Icon? closeSearchIcon;
   final ShapeBorder? chipShape;
+  final ShapeBorder? selectedChipShape;
   final Text? title;
   final bool scroll;
   final bool? searchable;
@@ -199,6 +205,7 @@ class _MultiSelectChipFieldView<V> extends StatefulWidget
     this.selectedTextStyle,
     this.icon,
     this.chipShape,
+    this.selectedChipShape,
     this.onTap,
     this.title,
     this.scroll = true,
@@ -227,6 +234,7 @@ class _MultiSelectChipFieldView<V> extends StatefulWidget
         initialValue = field.initialValue,
         selectedChipColor = field.selectedChipColor,
         chipShape = field.chipShape,
+  selectedChipShape = field.selectedChipShape,
         colorator = field.colorator,
         chipColor = field.chipColor,
         icon = field.icon,
@@ -469,7 +477,7 @@ class __MultiSelectChipFieldViewState<V>
       margin: EdgeInsets.all(0),
       padding: const EdgeInsets.all(2.0),
       child: ChoiceChip(
-        shape: widget.chipShape as OutlinedBorder? ??
+        shape: (_selectedValues.contains(item.value) ? widget.selectedChipShape : widget.chipShape) as OutlinedBorder? ??
             RoundedRectangleBorder(
               side: BorderSide(
                   color: widget.colorator != null &&

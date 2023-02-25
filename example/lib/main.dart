@@ -219,6 +219,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.blue[700], width: 1.8),
                 ),
+                chipShape: RoundedRectangleBorder(
+                  side: BorderSide(
+                      color: Colors.red),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(15.0),
+                    bottom: Radius.circular(15.0),
+                  ),
+                ),
+                selectedChipShape: RoundedRectangleBorder(
+                  side: BorderSide(
+                      color: Colors.yellow),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(15.0),
+                    bottom: Radius.circular(15.0),
+                  ),
+                ),
                 selectedChipColor: Colors.blue.withOpacity(0.5),
                 selectedTextStyle: TextStyle(color: Colors.blue[800]),
                 onTap: (values) {
